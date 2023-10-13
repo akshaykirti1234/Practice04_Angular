@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EmployeeService } from 'src/app/services/employee.service';
 
 @Component({
@@ -20,7 +20,7 @@ export class AddEmpComponent implements OnInit {
 
   constructor(public formBuilder: FormBuilder, public empService: EmployeeService) {
     this.empFormData = formBuilder.group({
-      'empName': [''],
+      'empName': ['', [Validators.required, Validators.minLength(3)]],
       'empSalary': [''],
       'empMail': [''],
       'empMobile': [''],
